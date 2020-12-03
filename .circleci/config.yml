@@ -7,9 +7,9 @@ docker_auth: &docker_auth
 
 defaults: &defaults
   environment:
-    GOOGLE_PROJECT_ID: planet-4-151612
+    GOOGLE_PROJECT_ID: jendevops1
   docker:
-    - image: greenpeaceinternational/circleci-base:latest
+    - image: jencub2/circleci-base:latest
       auth:
         <<: *docker_auth
   working_directory: /home/circleci/app
@@ -19,7 +19,7 @@ jobs:
     <<: *defaults
     steps:
       - setup_remote_docker:
-          docker_layer_caching: true
+          docker_layer_caching: false
       - checkout
       - run:
           name: Configure
@@ -77,7 +77,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - setup_remote_docker:
-          docker_layer_caching: true
+          docker_layer_caching: false
       - run:
           background: true
           command: |
@@ -88,10 +88,10 @@ jobs:
           name: Tag :latest
           command: |
             export CIRCLE_BUILD_NUM=$(cat /tmp/workspace/var/circle-build-num)
-            docker pull greenpeaceinternational/circleci-base:build-${CIRCLE_BUILD_NUM}
-            docker tag greenpeaceinternational/circleci-base:build-${CIRCLE_BUILD_NUM} greenpeaceinternational/circleci-base:latest
-            TYPE="Tag: greenpeaceinternational/circleci-base:latest" notify-job-success.sh
-            docker push greenpeaceinternational/circleci-base:latest
+            docker pull jencub2/circleci-base:build-${CIRCLE_BUILD_NUM}
+            docker tag jencub2/circleci-base:build-${CIRCLE_BUILD_NUM} jencub2/circleci-base:latest
+            TYPE="Tag: jencub2/circleci-base:latest" notify-job-success.sh
+            docker push jencub2/circleci-base:latest
       - run:
           command: trigger-build-api.sh planet4-builder develop
 

@@ -1,4 +1,4 @@
-# greenpeaceinternational/circleci-base:v0.7.41
+# jencub2/circleci-base:v0.7.41
 # Base image for performing CI/CD operations in CircleCI
 # Branch: v0.7.41
 # Commit: 051445e2912bb28f7bda067f4d44711e681265f1

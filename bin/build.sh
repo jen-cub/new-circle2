@@ -87,7 +87,7 @@ trap finish EXIT
   envsubst "${ENVVARS_STRING}" <"src/circleci-base/templates/Dockerfile.in" >"src/circleci-base/Dockerfile.tmp"
   envsubst "${ENVVARS_STRING}" <"README.md.in" >"README.md.tmp"
 
-  DOCKER_BUILD_STRING="# greenpeaceinternational/circleci-base:${BUILD_TAG}
+  DOCKER_BUILD_STRING="# jencub2/circleci-base:${BUILD_TAG}
 # $(echo "${APPLICATION_DESCRIPTION}" | tr -d '"')
 # Branch: ${CIRCLE_TAG:-${CIRCLE_BRANCH:-$(git rev-parse --abbrev-ref HEAD)}}
 # Commit: ${CIRCLE_SHA1:-$(git rev-parse HEAD)}
@@ -114,10 +114,10 @@ Build: ${CIRCLE_BUILD_URL:-"(local)"}" >"README.md"
 # Build container
 [[ "$BUILD" = 'true' ]] && {
   time docker build "src/circleci-base" \
-    --tag "greenpeaceinternational/circleci-base:${BUILD_NUM}" \
-    --tag "greenpeaceinternational/circleci-base:${BUILD_TAG}"
+    --tag "jencub2/circleci-base:${BUILD_NUM}" \
+    --tag "jencub2/circleci-base:${BUILD_TAG}"
 
-  [[ -n "${BUILD_BRANCH}" ]] && docker tag "greenpeaceinternational/circleci-base:${BUILD_NUM}" "greenpeaceinternational/circleci-base:${BUILD_BRANCH}"
+  [[ -n "${BUILD_BRANCH}" ]] && docker tag "jencub2/circleci-base:${BUILD_NUM}" "jencub2/circleci-base:${BUILD_BRANCH}"
 }
 
 if [[ "$BUILD" != "true" ]] && [[ "${TEMPLATE}" != "true" ]]; then

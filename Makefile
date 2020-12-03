@@ -21,7 +21,7 @@ IMAGE_FROM := $(BASE_NAMESPACE)/$(BASE_IMAGE):$(BASE_TAG)
 endif
 
 BUILD_IMAGE_NAMESPACE ?= gcr.io
-BUILD_IMAGE_PROJECT ?= greenpeaceinternational
+BUILD_IMAGE_PROJECT ?= jencub2
 BUILD_IMAGE_NAME ?= circleci-base
 
 # Image to build
